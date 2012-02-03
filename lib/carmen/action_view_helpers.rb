@@ -34,7 +34,9 @@ module ActionView
           end
         end
 
-        return country_options + options_for_select(Carmen.countries, priority_country_codes.include?(selected) ? nil : selected)
+        other_countries = Carmen.countries.sort_by{ |pair| pair.first }
+
+        return country_options + options_for_select(other_countries, priority_country_codes.include?(selected) ? nil : selected)
       end
     end
 
